@@ -2,7 +2,7 @@ import Joi from "joi";
 
 const validation = variant => {
   const schema = Joi.object({
-    size: Joi.string().empty().required()
+    size: Joi.number().integer().required().empty()
       .messages({
         "any.required": "Size is required.",
         "string.empty": "Sorry, size cannot be an empty field"

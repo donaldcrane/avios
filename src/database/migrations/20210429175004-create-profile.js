@@ -23,11 +23,11 @@ module.exports = {
       profilePicture: {
         type: Sequelize.STRING
       },
-      date_uploaded: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      date_edited: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

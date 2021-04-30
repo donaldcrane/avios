@@ -85,7 +85,7 @@ export default class User {
    * @param {string} profile - The user profile details
    * @returns {object} - An instance of the Profile model class
    */
-  static async updateUserProfile(id, profile) {
+  static async updateProfile(id, profile) {
     try {
       return await database.Profiles.update(profile, {
         where: { userId: id },

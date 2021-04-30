@@ -112,21 +112,20 @@ export default class ProductController {
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const { name, description } = req.body;
-      const Product = await Admin.getProduct(id);
+      const Product = await getProduct(id);
       if (!Product) return res.status(404).json({ status: 404, error: "Product not found." });
       let newname;
       if (name) {
         newname = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         req.body.name = newname;
       }
-      const newProduct = await updateProduct(id, req.body);
+      await updateProduct(id, req.body);
       return res.status(200).json({
         status: 200,
-        message: "Successfully updated Product.",
-        data: newProduct[1],
+        message: "Successfully updated Product."
       });
     } catch (error) {
-      return res.status(404).json({ status: 404, error: "Resource not found.", });
+      return res.status(404).json({ status: 404, error: "Resource not found." });
     }
   }
 }

@@ -9,8 +9,8 @@ module.exports = {
       quantity: 5,
       images: "http://bag.com",
       price: 17500,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },{
       id: "f175c640-81ff-405a-89a8-460ea2f71577",
       productId: "c375c640-81ff-405a-89a8-460ea2f71755",
@@ -19,8 +19,8 @@ module.exports = {
       quantity: 15,
       images: "http://bag.com",
       price: 15000,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: "a044e505-937b-4908-9422-7aa57044e48a",
@@ -30,8 +30,8 @@ module.exports = {
       quantity: 50,
       images: "http://hp.com",
       price: 165000,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: "e044e505-937b-4908-9422-7aa57044e87a",
@@ -41,8 +41,8 @@ module.exports = {
       quantity: 35,
       images: "http://hp.com",
       price: 150000,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: "7dc6de97-2ed6-4422-9ce2-9ff22cc5e79a",
@@ -52,8 +52,8 @@ module.exports = {
       quantity: 12,
       images: "http://tv.com",
       price: 120000,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: "6cd6de97-2ed6-4422-9ce2-9ff22cc5e97a",
@@ -63,8 +63,8 @@ module.exports = {
       quantity: 6,
       images: "http://tv.com",
       price: 145000,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: "6cbaa746-6e42-453e-91f4-c0de15fb4bf9",
@@ -74,8 +74,8 @@ module.exports = {
       quantity: 25,
       images: "http://apple.com",
       price: 320000,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: "6abba746-6e42-453e-91f4-c0de15fb4ef9",
@@ -85,8 +85,8 @@ module.exports = {
       quantity: 9,
       images: "http://apple.com",
       price: 480000,
-      date_uploaded: new Date(),
-      date_edited: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }
     ,], 
     {});

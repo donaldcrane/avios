@@ -1,8 +1,8 @@
 import VariantServices from "../services/variant";
-import { validation, validateId } from "../validations/Variant";
+import { validation, validateId } from "../validations/variant";
 
 const {
-  addVariant, getAllVariants, getVariant, deleteVariant, updateVariant
+  addVariant, getAllVariants, getVariant, deleteVariant, updateVariant, updateImage
 } = VariantServices;
 
 /**
@@ -18,7 +18,7 @@ export default class VariantController {
    */
   static async addVariant(req, res) {
     try {
-      const { id } = req.params;
+      const { productId } = req.params;
       const {
         size, color, quantity, price
       } = req.body;
@@ -26,9 +26,8 @@ export default class VariantController {
       if (error) {
         return res.status(400).json({ status: 400, error: error.message });
       }
-      if (!req.file) return res.status(401).json({ error: true, message: "Please provide an image." });
       const newVariant = {
-        productId: id, size, color, quantity, images: req.file.path, price
+        productId, size, color, quantity, price
       };
       const createdVariant = await addVariant(newVariant);
       return res.status(201).json({ status: 201, message: "A Variant has been added.", data: createdVariant, });
@@ -118,19 +117,37 @@ export default class VariantController {
       const {
         size, color, quantity, price
       } = req.body;
-      const Variant = await Admin.getVariant(id);
+      const Variant = await getVariant(id);
       if (!Variant) return res.status(404).json({ status: 404, error: "Variant not found." });
       const newVariant = {
-        size, color, quantity, images: req.file.path, price
+        size, color, quantity, price
       };
-      const updatedVariant = await updateVariant(id, newVariant);
+      await updateVariant(id, newVariant);
       return res.status(200).json({
         status: 200,
-        message: "Successfully updated Variant.",
-        data: updatedVariant[1],
+        message: "Successfully updated Variant."
       });
     } catch (error) {
-      return res.status(404).json({ status: 404, error: "Resource not found.", });
+      return res.status(404).json({ status: 404, error: "Resource not found." });
+    }
+  }
+
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
+  static async updateVariantImage(req, res) {
+    try {
+      const { id } = req.decoded.user;
+      if (!req.file) return res.status(401).json({ error: true, message: "Please provide an image." });
+      await updateImage(id, req.file.path);
+      return res.status(200).json({
+        status: 200,
+        message: "Variant image updated."
+      });
+    } catch (error) {
+      return res.status(500).json({ status: 500, error: "Resource not found." });
     }
   }
 }

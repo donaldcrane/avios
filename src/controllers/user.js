@@ -7,7 +7,7 @@ import jwtHelper from "../utilities/jwt";
 dotenv.config();
 const { generateToken } = jwtHelper;
 const {
-  emailExist, usernameExist, createUser, updateUserProfile, getAllUsers, updateUserProfilePicture
+  emailExist, usernameExist, createUser, updateProfile, getAllUsers, updateUserProfilePicture
 } = User;
 /**
  * @class UserController
@@ -44,7 +44,7 @@ export default class UserController {
         message: "User created Successfuly, Kindly log in!"
       });
     } catch (error) {
-      return res.status(500).json({ status: 500, error: error.message });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -70,7 +70,7 @@ export default class UserController {
         data: token
       });
     } catch (error) {
-      return res.status(500).json({ status: 500, error: error.message });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -84,11 +84,11 @@ export default class UserController {
       const { id } = req.decoded.user;
       const { error } = profileValidate(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const updatedProfile = await updateUserProfile(id, req.body);
+      await updateProfile(id, req.body);
+      console.log(updatedProfile);
       return res.status(200).json({
         status: 200,
         message: "User profile updated.",
-        data: updatedProfile[1]
       });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Resource not found." });
@@ -118,11 +118,10 @@ export default class UserController {
     try {
       const { id } = req.decoded.user;
       if (!req.file) return res.status(401).json({ error: true, message: "Please provide an image." });
-      const updatedProfile = await updateUserProfilePicture(id, req.file.path);
+      await updateUserProfilePicture(id, req.file.path);
       return res.status(200).json({
         status: 200,
-        message: "User profile picture updated.",
-        data: updatedProfile[1]
+        message: "User profile picture updated."
       });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Resource not found." });

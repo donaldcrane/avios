@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
       },
       size: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       color: {
@@ -28,17 +28,17 @@ module.exports = {
       },
       images: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       price: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      date_uploaded: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      date_edited: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

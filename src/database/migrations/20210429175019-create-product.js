@@ -22,11 +22,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      date_uploaded: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      date_edited: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

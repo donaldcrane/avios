@@ -74,4 +74,21 @@ export default class VariantServices {
       throw err;
     }
   }
+
+  /**
+   * @param {string} id - The user id
+   * @param {string} profile - The user profile picture details
+   * @returns {object} - An instance of the Profile model class
+   */
+  static async updateImage(id, profile) {
+    try {
+      return await database.Variants.update({ images: profile }, {
+        where: { id },
+        returning: true,
+        plain: true
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
