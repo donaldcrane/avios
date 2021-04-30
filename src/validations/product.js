@@ -1,23 +1,21 @@
 import Joi from "joi";
 
-const validation = post => {
+const validation = product => {
   const schema = Joi.object({
-    post: Joi.string().empty().required()
+    name: Joi.string().empty().required()
       .messages({
-        "any.required": "Post is required.",
-        "string.empty": "Sorry, post cannot be an empty field."
+        "any.required": "Sorry, Product name is required.",
+        "string.empty": "Product name cannot be an empty field.",
       }),
-    media: Joi.string().empty()
+    description: Joi.string().empty().required()
       .messages({
-        "any.required": "A media is required.",
-        "string.empty": "media field cannot be an empty field.",
-        "string.base": "Please provide a valid link."
-
+        "any.required": "Product description is required.",
+        "string.empty": "Sorry, description cannot be an empty field"
       }),
   }).messages({
     "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
-  return schema.validate(post);
+  return schema.validate(product);
 };
 const validateId = ids => {
   const schema = Joi.object({
