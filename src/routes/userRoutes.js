@@ -1,5 +1,5 @@
 import { Router } from "express";
-import UserController from "../controllers/User";
+import UserController from "../controllers/user";
 import Authentication from "../middlewares/authenticate";
 import parser from "../middlewares/uploads";
 
