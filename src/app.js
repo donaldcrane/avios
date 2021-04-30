@@ -7,6 +7,7 @@ import router from "./routes/index";
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
@@ -20,8 +21,6 @@ app.use("/api/v1", router);
 app.get("/", (req, res) => {
   res.send("Welcome to Avios app");
 });
-
-const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server Running on: ${port}`);
